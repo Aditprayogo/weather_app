@@ -2,10 +2,7 @@ const request = require('request')
 const axios = require('axios')
 
 const geocode = require('./utils/geocode')
-
-
-const url =
-    'https://api.darksky.net/forecast/7067693762e51eb685b7001b0540e361/-6.17833,106.63194?units=si&lang=id';
+const forecast = require('./utils/forecast')
 
 // axios.get(url)
 //     .then((res) => {
@@ -21,25 +18,22 @@ const url =
 
 //     })
 
-// geocoding service
 
-// const urlMap =
-//     'https://api.mapbox.com/geocoding/v5/mapbox.places/Tangerang.json?access_token=pk.eyJ1IjoiYWRpdHByYXlvZ28iLCJhIjoiY2s2YmMzbGNzMHpwNDNtb2R1bnQ3dTZvcyJ9.UQGhmj_qtpn8cnn0QE7Zrg&limit=1';
 
-// axios.get(urlMap)
-//     .then((res) => {
+//
+// Goal: Create a reusable function for getting the forecast
+//
+// 1. Setup the "forecast" function in utils/forecast.js
+// 2. Require the function in app.js and call it as shown below
+// 3. The forecast function should have three potential calls to callback:
+//    - Low level error, pass string for error
+//    - Coordinate error, pass string for error
+//    - Success, pass forecast string for data (same format as from before)
 
-//         const latitude = res.data.features[0].center[1]
-//         const longitude = res.data.features[0].center[0]
-
-//         console.log(latitude + ',' + longitude)
-
-//     })
-//     .catch((err) => {
-//         console.log(err.response.data);
-//         console.log(err.response.status);
-//         console.log(err.response.headers);
-//     })
+forecast(-6.17833, 106.63194, (err, data) => {
+    console.log('Error', err)
+    console.log('Data', data)
+})
 
 
 
